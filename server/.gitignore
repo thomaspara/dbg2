@@ -1,5 +1,5 @@
 # Config
-./src/config/config.js
+src/config/config.js
 
 # Node Modules
-./node_modules
+node_modules
