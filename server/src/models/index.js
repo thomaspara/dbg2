@@ -36,7 +36,7 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 
 // Models/Tables
-// db.users = require('./User.js')(sequelize, Sequelize)
+db.users = require('./User.js')(sequelize, Sequelize)
 
 // Relations
 
