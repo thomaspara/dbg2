@@ -18,7 +18,7 @@ CREATE TABLE BillingInfo (
 CREATE TABLE Seller (
   seller_id INT NOT NULL,
   seller_name TEXT,
-  product_description TEXT,
+  seller_description TEXT,
   PRIMARY KEY (seller_id)
 );
 
