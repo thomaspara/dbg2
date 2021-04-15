@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       customer_id: { // Foreign Key
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
           model: 'Customers',
           key: 'customer_id'

@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      name: {
+      seller_name: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      description: {
-        type: DataTypes.STRING,
+      seller_description: {
+        type: DataTypes.TEXT,
         allowNull: false
       }
     })

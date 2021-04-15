@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const Transaction = sequelize.define('Transaction', {
-      transaction_id: { // Primary Key
+    const Cart = sequelize.define('Cart', {
+      cart_id: { // Primary Key
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -21,17 +21,8 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Products',
           key: 'product_id'
         }
-      },
-      seller_id: { // Foreign Key
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Sellers',
-          key: 'seller_id'
-        }
-      },
-      total_cost: DataTypes.DOUBLE
+      }
     })
 
-    return Transaction
+    return Cart
   }

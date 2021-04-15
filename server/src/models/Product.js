@@ -6,20 +6,21 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      name: {
+      product_name: {
         type: DataTypes.STRING,
         allowNull: false
       },
       price: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DOUBLE,
         allowNull: false
       },
-      description: {
-        type: DataTypes.STRING,
+      product_description: {
+        type: DataTypes.TEXT,
         allowNull: false
       },
       seller_id: { // Foreign Key
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
           model: 'Sellers',
           key: 'seller_id'

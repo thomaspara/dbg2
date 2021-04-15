@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
             allowNull: false,
         },
-        password: {
+        user_password: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -34,11 +34,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         f_name: DataTypes.STRING,
-        l_name: DataTypes.STRING,
-        /* cart: DataTypes.ARRAY(DataTypes.DECIMAL)
-            Only works with postgresQL
-        */
-       cart: DataTypes.JSON // Save array of product_id's here
+        l_name: DataTypes.STRING
     }, {
         hooks: {
             beforeSave: hashPassword

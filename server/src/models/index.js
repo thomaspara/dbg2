@@ -36,17 +36,16 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 
 // Models/Tables
-<<<<<<< HEAD
 db.customers = require('./Customer.js')(sequelize, Sequelize)
 db.billing_info = require('./BillingInfo.js')(sequelize, Sequelize)
 db.products = require('./Product.js')(sequelize, Sequelize)
 db.sellers = require('./Seller.js')(sequelize, Sequelize)
 db.transactions = require('./Transaction.js')(sequelize, Sequelize)
-=======
-// db.users = require('./User.js')(sequelize, Sequelize)
->>>>>>> parent of 9daf6b2 (Init. backend)
+db.carts = require('./Cart.js')(sequelize, Sequelize)
 
 // Relations
-db.sellers.hasMany(db.products)
+
+
+
 
 module.exports = db
