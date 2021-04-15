@@ -1,3 +1,6 @@
+CREATE DATABASE db_market;
+USE db_market;
+
 CREATE TABLE Customer (
   customer_id INT NOT NULL,
   f_name TEXT,
