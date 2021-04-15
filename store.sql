@@ -51,5 +51,5 @@ CREATE TABLE Cart (
   quantity INT,
   PRIMARY KEY (cart_id),
   FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
-  FOREIGN KEY (product_id) REFERENCES Products(product_id),
-);
+  FOREIGN KEY (product_id) REFERENCES Products(product_id)
+); 
