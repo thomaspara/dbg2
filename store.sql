@@ -1,40 +1,48 @@
 CREATE TABLE `Customer` (
-  `customer_id` <type>,
-  `f_name` <type>,
-  `l_name` <type>,
-  `password` <type>,
-  `email` <type>,
-  `cart` <type>,
+  `customer_id` INT,
+  `f_name` TEXT,
+  `l_name` TEXT,
+  `password` TEXT,
+  `email` TEXT,
   PRIMARY KEY (`customer_id`)
 );
 
 CREATE TABLE `Billing Info` (
-  `bill_id` <type>,
-  `bank_num` <type>,
-  `customer_id` <type>,
+  `bill_id` INT,
+  `bank_num` INT,
+  `customer_id` INT,
   PRIMARY KEY (`bill_id`)
 );
 
 CREATE TABLE `Transaction` (
-  `transaction_id` <type>,
-  `customer_id` <type>,
-  `product_id` <type>,
-  `seller_id` <type>,
+  `transaction_id` INT,
+  `customer_id` INT,
+  `product_id` INT,
+  `seller_id` INT,
+  `total_cost` DOUBLE(100,2),
   PRIMARY KEY (`transaction_id`)
 );
 
 CREATE TABLE `Products` (
-  `product_id` <type>,
-  `name` <type>,
-  `price` <type>,
-  `description` <type>,
-  `seller_id` <type>,
+  `product_id` INT,
+  `name` TEXT,
+  `price` DOUBLE(100,2),
+  `description` TEXT,
+  `seller_id` INT,
   PRIMARY KEY (`product_id`)
 );
 
 CREATE TABLE `Seller` (
-  `seller_id` <type>,
-  `name` <type>,
-  `description` <type>,
+  `seller_id` INT,
+  `name` TEXT,
+  `description` TEXT,
   PRIMARY KEY (`seller_id`)
+);
+
+CREATE TABLE `Cart` (
+  `cart_id` INT,
+  `customer_id` INT,
+  `product_id` INT,
+  `quantity` INT,
+  PRIMARY KEY (`cart_id`)
 );
