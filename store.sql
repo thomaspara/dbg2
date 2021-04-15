@@ -25,7 +25,7 @@ CREATE TABLE Seller (
 CREATE TABLE Products (
   product_id INT NOT NULL,
   product_name TEXT,
-  price DOUBLE(100,2),
+  price DOUBLE,
   product_description TEXT,
   seller_id INT NOT NULL,
   PRIMARY KEY (product_id),
@@ -37,7 +37,7 @@ CREATE TABLE Transaction (
   customer_id INT NOT NULL,
   product_id INT NOT NULL,
   seller_id INT NOT NULL,
-  total_cost DOUBLE(100,2),
+  total_cost DOUBLE,
   PRIMARY KEY (transaction_id),
   FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
   FOREIGN KEY (product_id) REFERENCES Products(product_id),
