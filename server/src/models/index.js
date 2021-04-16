@@ -56,7 +56,6 @@ db.carts = require('./Cart.js')(sequelize, Sequelize)
 */
 db.customers.hasOne(db.carts, { foreignKey: 'customer_id' }) // cart is the target
 db.customers.hasOne(db.billing_info, { foreignKey: 'customer_id' })
-db.transactions.hasOne(db.customers, { foreignKey: 'customer_id' }) // a single customer will make a single transaction
 
 /*
     One-To-Many associations are connecting one source with multiple targets. The targets however are again connected to exactly one specific source.
