@@ -65,7 +65,7 @@ db.sellers.hasMany(db.products, { foreignKey: 'seller_id' }) // a seller lists m
 /*
     Belongs-To-Many associations are used to connect sources with multiple targets. Furthermore the targets can also have connections to multiple sources.
 */
-db.carts.belongsToMany(db.products, { foreignKey: 'product_id' }) // a product can be in multiple carts
+// db.carts.belongsToMany(db.products, { foreignKey: 'product_id' }) // a product can be in multiple carts
 
 
 module.exports = db
