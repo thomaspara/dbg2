@@ -10,7 +10,7 @@ app.use(morgan('combined')) // Generates logs when pinging our API
 app.use(bodyParser.json()) // Process JSON data easily
 app.use(cors())
 
-// require('./routes')(app)
+require('./routes')(app)
 
 sequelize.sync()
     .then(() => {

@@ -4,15 +4,16 @@ module.exports = {
     register (req, res, next) {
         const schema = Joi.object({
             email: Joi.string().email(),
-            password: Joi.string().regex(
+            user_password: Joi.string().regex(
                 new RegExp('^[a-zA-Z0-9]{8,32}$')
             ),
-            firstname: Joi.string(),
-            lastname: Joi.string()
+            customer_id: Joi.number().integer(),
+            f_name: Joi.string(),
+            l_name: Joi.string()
         })
         // DEPRECATED VERSION
         //                   = Joi.validate(req.body, schema);
-        const {error, value} = schema.validate(req.body);
+        const {error, value} = schema.validate(req.body.customer);
         if (error) {
             switch (error.details[0].context.key) {
                 case 'email':
@@ -27,7 +28,6 @@ module.exports = {
                             1. It must contain ONLY the following characters: lower case, upper case, numerics.
                             <br>
                             2. It must be at least 8 characters in length and not greater than 32 characters in length.`
-
                     })
                     break
                 default:

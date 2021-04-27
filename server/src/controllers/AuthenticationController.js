@@ -14,15 +14,15 @@ function jwtSignCustomer (customer) {
 module.exports = {
     async register (req, res) {
         try {
-            const { email, password } = req.body.customer
+            const { email, user_password } = req.body.customer
             const CUSTOMER = await Customer.create({
                 email: email,
-                password: password
+                user_password: user_password
             })
             const customerJson = CUSTOMER.toJSON()
             res.status(200).send({
                 customer: {
-                    id: customerJson.id,
+                    customer_id: customerJson.customer_id,
                     email: customerJson.email,
                     createdAt: customerJson.createdAt,
                     updatedAt: customerJson.updatedAt
@@ -49,7 +49,7 @@ module.exports = {
                 })
             }
 
-            const isPasswordValid = await CUSTOMER.comparePassword(req.body.customer.password)
+            const isPasswordValid = await CUSTOMER.comparePassword(req.body.customer.user_password)
             if (!isPasswordValid) {
                 return res.status(403).send({
                     error: 'The login information was incorrect.'
@@ -58,7 +58,7 @@ module.exports = {
             const customerJson = CUSTOMER.toJSON()
             res.status(200).send({
                 customer: {
-                    id: customerJson.id,
+                    customer_id: customerJson.id,
                     email: customerJson.email,
                     token: jwtSignCustomer(customerJson)
                 },
