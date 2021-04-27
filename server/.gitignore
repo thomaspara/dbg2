@@ -1,5 +1,6 @@
 # Config
 src/config/config.js
+pacakge-lock.json
 
 # Node Modules
 node_modules
