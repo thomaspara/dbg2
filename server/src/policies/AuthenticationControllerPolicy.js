@@ -7,7 +7,7 @@ module.exports = {
             user_password: Joi.string().regex(
                 new RegExp('^[a-zA-Z0-9]{8,32}$')
             ),
-            customer_id: Joi.number().integer(),
+            //customer_id: Joi.number().integer(),
             f_name: Joi.string(),
             l_name: Joi.string()
         })

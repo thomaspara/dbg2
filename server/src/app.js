@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const { sequelize } = require('./models')
-const config = require('./config/config')
+const config = require('./config/config.js')
 
 const app = express() // Used to build REST endpoints
 app.use(morgan('combined')) // Generates logs when pinging our API
