@@ -28,7 +28,7 @@ input[type=text] {
     border: none;
     padding: 1%;
 }
-.form_button {
+.button {
     background: #7496F3;
     color: white;
     border: none;

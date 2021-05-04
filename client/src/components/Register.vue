@@ -9,7 +9,7 @@
       <input class="form_input" type="text" name="password" placeholder="Password">
     </form>
     <p class="login-link">Already Registered? <a href="#">Login</a></p>
-    <div class="form_button" href="#">Register</div>
+    <div class="button" href="#">Register</div>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   }
-}
+};
 </script>
 
 <style scoped>
