@@ -6,8 +6,8 @@
         <input class="form_input" type="text" name="email" placeholder="Email">
         <input class="form_input" type="text" name="password" placeholder="Password">
         </form>
-        <p class="login-link">Don't have an account? <a href="#">Register</a></p>
-        <div class="button">Login</div>
+        <p class="login-link">Don't have an account? <router-link class="router_link" to="/register">Register</router-link></p>
+        <router-link to="/home" class="button">Login</router-link>
     </div>
 </template>
 

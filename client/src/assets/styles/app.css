@@ -41,7 +41,7 @@ input[type=text] {
     margin-top: 3%;
     cursor: pointer;
 }
-.login-link, a:link, a:visited, a:hover, a:active {
+.login-link, router_link:link, router_link:visited, router_link:hover, router_link:active {
     color: #737171;
     font-size: 12px;
 }
