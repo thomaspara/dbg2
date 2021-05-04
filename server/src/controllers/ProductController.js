@@ -5,7 +5,7 @@ module.exports = {
         try {
             console.log(req.body.product)
             const product = await Product.create({
-                product_name: req.body.product.customer_id,
+                product_name: req.body.product.product_name,
                 price: req.body.product.price,
                 product_description: req.body.product.product_description,
                 seller_id: req.body.product.seller_id
