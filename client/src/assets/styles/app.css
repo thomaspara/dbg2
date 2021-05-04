@@ -1,0 +1,47 @@
+.card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 9px;
+    padding: 4%;
+}
+.brand-name {
+    color: #AF38FB;
+    font-weight: bold;
+    font-size: 24px;
+}
+.page-name {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 3%;
+    font-weight: bold;
+}
+input[type=text] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+    background: #E7E7E7;
+    border: none;
+    padding: 1%;
+}
+.form_button {
+    background: #7496F3;
+    color: white;
+    border: none;
+    padding: 10px 55px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 3%;
+    cursor: pointer;
+}
+.login-link, a:link, a:visited, a:hover, a:active {
+    color: #737171;
+    font-size: 12px;
+}
