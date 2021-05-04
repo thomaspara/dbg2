@@ -45,3 +45,13 @@ input[type=text] {
     color: #737171;
     font-size: 12px;
 }
+
+.product-card {
+    width: 30%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 9px;
+    display: inline-block;
+    margin: 1%;
+    color: #737171;
+}
