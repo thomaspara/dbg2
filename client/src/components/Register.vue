@@ -6,25 +6,25 @@
       <input
         class="form_input"
         type="text"
-        name="firstname"
+        v-model="customer.f_name"
         placeholder="First Name"
       />
       <input
         class="form_input"
         type="text"
-        name="lastname"
+        v-model="customer.l_name"
         placeholder="Last Name"
       />
-      <input class="form_input" type="text" name="email" placeholder="Email" />
+      <input class="form_input" type="text" v-model="customer.email" placeholder="Email" />
       <input
         class="form_input"
         type="text"
-        name="password"
+        v-model="customer.user_password"
         placeholder="Password"
       />
     </form>
     <p class="login-link">Already Registered? <router-link class="router_link" to="/login">Login</router-link></p>
-    <router-link to="/home" class="button" href="#">Register</router-link>
+    <div to="/home" class="button" @click="register()">Register</div>
   </div>
 </template>
 
@@ -34,19 +34,26 @@ export default {
   name: 'Register',
   data () {
     return {
-      customer: []
+      customer: [{
+        f_name: '',
+        l_name: '',
+        email: '',
+        user_password: ''
+      }]
     }
   },
   methods: {
         async register () { 
-            await RegisterService.post()
-                .then(({ data }) => {
-                    console.log(data)
-                    this.customer =  data.customer 
-                })
-                .catch(error => {
-                    throw new Error(error)
-                })
+            await RegisterService.post('/register',{
+              body: this.customer
+            })
+            // .then((response) => { 
+            //   response.data 
+            //   console.log(response.data)
+            // })
+            .catch(error => {
+              throw new Error(error)
+            })
         },
     }
 }
