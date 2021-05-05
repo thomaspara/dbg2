@@ -29,13 +29,26 @@
 </template>
 
 <script>
+import { RegisterService } from '@/common/api.service.js'
 export default {
   name: 'Register',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      customer: []
     }
-  }
+  },
+  methods: {
+        async register () { 
+            await RegisterService.post()
+                .then(({ data }) => {
+                    console.log(data)
+                    this.customer =  data.customer 
+                })
+                .catch(error => {
+                    throw new Error(error)
+                })
+        },
+    }
 }
 </script>
 
