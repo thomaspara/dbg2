@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li><a class="menu_brand-name" href="#">Retail Store</a></li>
+        <li><router-link class="menu_brand-name" to="/home">Retail Store</router-link></li>
         <li><a class="menu_options" href="#">Account</a></li>
         <li><a class="menu_options" href="#"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></a></li>
     </ul>
