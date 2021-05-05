@@ -26,6 +26,8 @@ module.exports = {
                 customer: {
                     customer_id: customerJson.customer_id,
                     email: customerJson.email,
+                    f_name: customerJson.f_name,
+                    l_name: customerJson.l_name,
                     createdAt: customerJson.createdAt,
                     updatedAt: customerJson.updatedAt
                 },
@@ -62,6 +64,8 @@ module.exports = {
                 customer: {
                     customer_id: customerJson.id,
                     email: customerJson.email,
+                    f_name: customerJson.f_name,
+                    l_name: customerJson.l_name,
                     token: jwtSignCustomer(customerJson)
                 },
 
