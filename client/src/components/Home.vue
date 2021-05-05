@@ -76,7 +76,7 @@ export default {
             await ProductService.query()
                 .then(({ data }) => {
                     console.log(data)
-                    this.products =  data.products // Sets our products[] to the fufilled promise's products[]
+                    this.products =  data.products // Sets our products[] to the fulfilled promise's products[]
                 })
                 .catch(error => {
                     throw new Error(error)
