@@ -14,10 +14,12 @@ function jwtSignCustomer (customer) {
 module.exports = {
     async register (req, res) {
         try {
-            const { email, user_password } = req.body.customer
+            const { email, user_password, f_name, l_name } = req.body.customer
             const CUSTOMER = await Customer.create({
                 email: email,
-                user_password: user_password
+                user_password: user_password,
+                f_name: f_name,
+                l_name: l_name
             })
             const customerJson = CUSTOMER.toJSON()
             res.status(200).send({
