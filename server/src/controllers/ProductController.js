@@ -3,7 +3,6 @@ const { Product } = require('../models')
 module.exports = {
     async createProduct(req, res) {
         try {
-            console.log(req.body.product)
             const product = await Product.create({
                 product_name: req.body.product.product_name,
                 price: req.body.product.price,
@@ -20,7 +19,7 @@ module.exports = {
     },
     async fetchProduct (req, res) {
         try {
-            const PRODUCT_ID = req.body.product_id
+            const PRODUCT_ID = req.params.product_id
             const PRODUCT = await Product.findOne({
                 where: {
                     product_id: PRODUCT_ID
@@ -38,6 +37,26 @@ module.exports = {
         } catch (err) {
             res.status(400).send({
                 error: 'Error trying to fetch product.'
+            })
+        }
+    },
+
+    async query (req, res) {
+        try {
+            const PRODUCTS = await Product.findAll()
+            if (!PRODUCTS) {
+                return res.status(404).send({
+                    error: 'Unable to fetch products.'
+                })
+            } else {
+                res.send({
+                    products: PRODUCTS,
+                    productsCount: PRODUCTS.length
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to fetch products.'
             })
         }
     }

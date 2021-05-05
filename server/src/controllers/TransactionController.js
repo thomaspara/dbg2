@@ -20,7 +20,7 @@ module.exports = {
     },
     async fetchTransaction (req, res) {
         try {
-            const TRANSACTION_ID = req.body.transaction_id
+            const TRANSACTION_ID = req.params.transaction_id
             const TRANSACTION = await Transaction.findOne({
                 where: {
                     transaction_id: TRANSACTION_ID

@@ -18,7 +18,7 @@ module.exports = {
     },
     async fetchSeller (req, res) {
         try {
-            const SELLER_ID = req.body.seller_id
+            const SELLER_ID = req.params.seller_id
             const SELLER = await Seller.findOne({
                 where: {
                     seller_id: SELLER_ID

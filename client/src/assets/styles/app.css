@@ -41,7 +41,21 @@ input[type=text] {
     margin-top: 3%;
     cursor: pointer;
 }
-.login-link, a:link, a:visited, a:hover, a:active {
+.login-link, router_link:link, router_link:visited, router_link:hover, router_link:active {
     color: #737171;
     font-size: 12px;
+}
+.span_break {
+    display: block;
+    margin-bottom: 2em;
+}
+
+.product-card {
+    width: 30%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 9px;
+    display: inline-block;
+    margin: 1%;
+    color: #737171;
 }
