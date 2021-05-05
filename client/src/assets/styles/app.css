@@ -45,6 +45,10 @@ input[type=text] {
     color: #737171;
     font-size: 12px;
 }
+.span_break {
+    display: block;
+    margin-bottom: 2em;
+}
 
 .product-card {
     width: 30%;

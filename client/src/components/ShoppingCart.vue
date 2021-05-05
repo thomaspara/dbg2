@@ -20,8 +20,4 @@ export default {
 </script>
 
 <style scoped>
-.span_break {
-    display: block;
-    margin-bottom: 1em;
-}
 </style>
