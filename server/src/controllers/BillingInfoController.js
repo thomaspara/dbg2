@@ -18,7 +18,7 @@ module.exports = {
     },
     async fetchBillingInfo (req, res) {
         try {
-            const BILL_ID = req.body.bill_id
+            const BILL_ID = req.params.bill_id
             const BILLINGINFO = await BillingInfo.findOne({
                 where: {
                     bill_id: BILL_ID

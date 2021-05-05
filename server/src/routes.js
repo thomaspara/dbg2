@@ -18,30 +18,32 @@ module.exports = (app) => {
     // Seller
     app.post('/seller/create',
         SellerController.createSeller)
-    app.post('/seller',
+    app.get('/seller/:seller_id',
         SellerController.fetchSeller)
 
     //BillingInfo
     app.post('/billinginfo/create',
         BillingInfoController.createBillingInfo)
-    app.post('/billinginfo',
+    app.get('/billinginfo/:bill_id',
         BillingInfoController.fetchBillingInfo)
 
     //Cart
     app.post('/cart/create',
         CartController.createCart)
-    app.post('/cart',
+    app.get('/cart/:cart_id',
         CartController.fetchCart)
-    
+
     //Product
     app.post('/product/create',
         ProductController.createProduct)
-    app.post('/product',
-        ProductController.fetchProduct)
+    app.get('/product/query',
+        ProductController.query)
+    app.get('/product/:product_id',
+        ProductController.fetchProduct) // FETCH MUST BE LAST ROUTE
 
     //Transaction
     app.post('/transaction/create',
         TransactionController.createTransaction)
-    app.post('/transaction',
+    app.get('/transaction/:transaction_id',
         TransactionController.fetchTransaction)
 }

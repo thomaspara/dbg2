@@ -18,7 +18,7 @@ module.exports = {
     },
     async fetchCart (req, res) {
         try {
-            const CART_ID = req.body.cart_id
+            const CART_ID = req.params.cart_id
             const CART = await Cart.findOne({
                 where: {
                     cart_id: CART_ID
