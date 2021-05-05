@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
-import Navbar from '@/components/Navbar'
+// import Navbar from '@/components/Navbar'
 
 Vue.use(Router)
 
