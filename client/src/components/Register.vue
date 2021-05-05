@@ -34,12 +34,12 @@ export default {
   name: 'Register',
   data () {
     return {
-      customer: [{
+      customer: {
         f_name: '',
         l_name: '',
         email: '',
         user_password: ''
-      }]
+      }
     }
   },
   methods: {
@@ -47,15 +47,15 @@ export default {
             await RegisterService.post('/register',{
               body: this.customer
             })
-            // .then((response) => { 
-            //   response.data 
-            //   console.log(response.data)
-            // })
+            .then((response) => { 
+              response.data 
+              console.log(response.data)
+            })
             .catch(error => {
               throw new Error(error)
             })
         },
-    }
+  }
 }
 </script>
 
