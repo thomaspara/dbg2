@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         addCart() {
-            console.log("Added to cart")
+            alert("Item has been added to cart");
         },
         async fetchProducts () { 
             // fetches ALL products in our database
@@ -56,5 +56,9 @@ export default {
 .plus-icon {
     color: #AF38FB;
     cursor: pointer;
+    float: right;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    font-size: 1.33em;
 }
 </style>
