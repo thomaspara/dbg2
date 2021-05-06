@@ -60,3 +60,9 @@ export const SellerService = {
     return ApiService.post('seller/create', { product: body })
   }
 }
+
+export const RegisterService = {
+  create (body) {
+    return ApiService.post('/register', { customer: body })
+  }
+}
