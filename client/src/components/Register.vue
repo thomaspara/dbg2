@@ -25,7 +25,7 @@
       />
     </form>
     <p class="login-link">Already Registered? <router-link class="router_link" to="/login">Login</router-link></p>
-    <router-link to="/home" class="button" @click="register()">Register</router-link>
+    <div class="button" @click="register()">Register</div>
   </div>
 </template>
 
@@ -46,10 +46,10 @@ export default {
   methods: {
         async register () { 
             await RegisterService.create({
-              f_name: this.customer.f_name,
-              l_name: this.customer.l_name,
               email: this.customer.email,
-              user_password: this.customer.user_password
+              user_password: this.customer.user_password,
+              f_name: this.customer.f_name,
+              l_name: this.customer.l_name
             })
             .then((response) => { 
               response.data 
