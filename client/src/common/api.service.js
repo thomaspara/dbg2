@@ -32,12 +32,6 @@ const ApiService = {
 
 export default ApiService
 
-export const LoginService = {
-  get (slug) {
-    return ApiService.get(`login/${slug}`)
-  },
-}
-
 export const ProductService = {
   query (type, params) {
     return ApiService.query('product/query', {
@@ -65,4 +59,9 @@ export const RegisterService = {
   create (body) {
     return ApiService.post('/register', { customer: body })
   }
+}
+export const LoginService = {
+  get (slug) {
+    return ApiService.get(`login/${slug}`)
+  },
 }
