@@ -4,7 +4,6 @@
     <h2 class="page-name">Registration</h2>
     <form action="#">
       <input
-        
         class="form_input"
         type="text"
         v-model="customer.f_name"
@@ -30,6 +29,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { RegisterService } from '@/common/api.service.js'
 export default {
   name: 'Register',

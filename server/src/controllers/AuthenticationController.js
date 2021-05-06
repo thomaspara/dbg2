@@ -76,5 +76,26 @@ module.exports = {
                 error: 'An error has occurred trying to log in.'
             })
         }
+    },
+
+    //remove if ever deployed
+    async query (req, res) {
+        try {
+            const CUSTOMERS = await Customer.findAll()
+            if (!CUSTOMERS) {
+                return res.status(404).send({
+                    error: 'Unable to fetch customers.'
+                })
+            } else {
+                res.send({
+                    customers: CUSTOMERS,
+                    customersCount: CUSTOMERS.length
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to fetch customers.'
+            })
+        }
     }
 }
