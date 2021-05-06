@@ -5,6 +5,7 @@
         <div v-for="product in products" :key=product.product_id class="product-card">
             <p>{{ product.product_name }}</p>
             <p>Product ID: {{ product.seller_id }}</p>
+            <p>Product Description: {{ product.product_description }}</p>
             <p>${{ product.price }}</p>
             <font-awesome-icon @click="addCart()" class="plus-icon" :icon="['fas', 'plus-circle']" />
         </div>

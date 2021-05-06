@@ -32,6 +32,12 @@ const ApiService = {
 
 export default ApiService
 
+export const LoginService = {
+  get (slug) {
+    return ApiService.get(`login/${slug}`)
+  },
+}
+
 export const ProductService = {
   query (type, params) {
     return ApiService.query('product/query', {
