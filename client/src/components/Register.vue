@@ -4,6 +4,7 @@
     <h2 class="page-name">Registration</h2>
     <form action="#">
       <input
+        
         class="form_input"
         type="text"
         v-model="customer.f_name"
@@ -24,7 +25,7 @@
       />
     </form>
     <p class="login-link">Already Registered? <router-link class="router_link" to="/login">Login</router-link></p>
-    <div to="/home" class="button" @click="register()">Register</div>
+    <router-link to="/home" class="button" @click="register()">Register</router-link>
   </div>
 </template>
 
@@ -44,8 +45,11 @@ export default {
   },
   methods: {
         async register () { 
-            await RegisterService.post('/register',{
-              body: this.customer
+            await RegisterService.create({
+              f_name: this.customer.f_name,
+              l_name: this.customer.l_name,
+              email: this.customer.email,
+              user_password: this.customer.user_password
             })
             .then((response) => { 
               response.data 
