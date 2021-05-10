@@ -5,7 +5,7 @@
         <div v-for="product in products" :key=product.product_id class="product-card">
             <p>{{ product.product_name }}</p>
             <p>Product Description: {{ product.product_description }}</p>
-            <p>Product ID: {{ product.seller_id }}</p>
+            <p>Product ID: {{ product.product_id }}</p>
             <p>${{ product.price }}</p>
             <font-awesome-icon @click="addCart()" class="plus-icon" :icon="['fas', 'plus-circle']" />
         </div>
@@ -33,12 +33,12 @@ export default {
         addCart() {
             alert("Item has been added to cart");
         },
-        async fetchProducts () { 
+        async fetchProducts () {
             // fetches ALL products in our database
             await ProductService.query()
                 .then(({ data }) => {
                     console.log(data)
-                    this.products =  data.products 
+                    this.products =  data.products
                     // Sets our products[] to the fulfilled promise's products[]
                 })
                 .catch(error => {
