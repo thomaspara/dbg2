@@ -15,8 +15,8 @@ module.exports = (app) => {
     app.post('/login',
         AuthenticationController.login)
     //remove if ever deployed
-    app.get('/customers',
-        AuthenticationController.query)
+    app.get('/customer/:customer_id',
+        AuthenticationController.fetchCustomer)
 
     // Seller
     app.post('/seller/create',

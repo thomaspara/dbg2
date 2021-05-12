@@ -78,23 +78,27 @@ module.exports = {
         }
     },
 
-    //remove if ever deployed
-    async query (req, res) {
+    async fetchCustomer (req, res) {
         try {
-            const CUSTOMERS = await Customer.findAll()
-            if (!CUSTOMERS) {
+            const CUSTOMER_ID = req.params.customer_id
+            const CUSTOMER = await Cart.findOne({
+                where: {
+                    customer_id: CUSTOMER_ID
+                }
+            })
+            if (!CUSTOMER) {
                 return res.status(404).send({
-                    error: 'Unable to fetch customers.'
+                    error: 'Unable to fetch customer.'
                 })
             } else {
                 res.send({
-                    customers: CUSTOMERS,
-                    customersCount: CUSTOMERS.length
+                    customers: CUSTOMER,
+                    customersCount: CUSTOMER.length
                 })
             }
         } catch (err) {
             res.status(400).send({
-                error: 'Error trying to fetch customers.'
+                error: 'Error trying to fetch customer.'
             })
         }
     }
