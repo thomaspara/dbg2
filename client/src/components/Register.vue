@@ -37,6 +37,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { mapState } from 'vuex'
 import { REGISTER } from '@/store/actions.type'
 export default {
