@@ -24,12 +24,14 @@
         placeholder="Password"
       />
     </form>
+    <p class="login-link">*Minimum of 8 characters for password required*</p>
     <p class="login-link">Already Registered? <router-link class="router_link" to="/login">Login</router-link></p>
-    <div class="button" @click="register()">Register</div>
+    <router-link to="/home" class="button" @click="register()">Register</router-link>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import { RegisterService } from '@/common/api.service.js'
 export default {
   name: 'Register',
