@@ -37,7 +37,6 @@ export default {
             // fetches ALL products in our database
             await ProductService.query()
                 .then(({ data }) => {
-                    console.log(data)
                     this.products =  data.products
                     // Sets our products[] to the fulfilled promise's products[]
                 })

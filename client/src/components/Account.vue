@@ -26,7 +26,6 @@
                     placeholder="Password"
                 />
             </form>
-
             <h2 class="page-name">Address</h2>
             <form action="#">
                 <input
@@ -87,10 +86,32 @@
 <script>
 /* eslint-disable */
 import Navbar from './Navbar.vue'
+// import { ProductService } from '@/common/api.service.js' => CustomerService
 export default {
     name: 'Account',
     components: {
         Navbar
+    },
+    data () {
+        return {
+            customer:{}
+        }
+    },
+    created() {
+        this.fetchCustomer();
+    },
+    methods: {
+        async fetchCustomer () {
+            // fetches ALL customer in our database
+            await CustomerService.query()
+                .then(({ data }) => {
+                    this.customer =  data.customer
+                    // Sets our customer[] to the fulfilled promise's customer[]
+                })
+                .catch(error => {
+                    throw new Error(error)
+                })
+        },
     }
 };
 </script>
