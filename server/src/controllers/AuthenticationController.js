@@ -81,7 +81,7 @@ module.exports = {
     async fetchCustomer (req, res) {
         try {
             const CUSTOMER_ID = req.params.customer_id
-            const CUSTOMER = await Cart.findOne({
+            const CUSTOMER = await Customer.findOne({
                 where: {
                     customer_id: CUSTOMER_ID
                 }
