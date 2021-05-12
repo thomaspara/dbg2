@@ -4,7 +4,6 @@
     <h2 class="page-name">Registration</h2>
     <form action="#">
       <input
-        
         class="form_input"
         type="text"
         v-model="customer.f_name"
@@ -16,7 +15,12 @@
         v-model="customer.l_name"
         placeholder="Last Name"
       />
-      <input class="form_input" type="text" v-model="customer.email" placeholder="Email" />
+      <input
+        class="form_input"
+        type="text"
+        v-model="customer.email"
+        placeholder="Email"
+      />
       <input
         class="form_input"
         type="text"
@@ -24,13 +28,17 @@
         placeholder="Password"
       />
     </form>
-    <p class="login-link">Already Registered? <router-link class="router_link" to="/login">Login</router-link></p>
+    <p class="login-link">
+      Already Registered?
+      <router-link class="router_link" to="/login">Login</router-link>
+    </p>
     <div class="button" @click="register()">Register</div>
   </div>
 </template>
 
 <script>
-import { RegisterService } from '@/common/api.service.js'
+import { mapState } from 'vuex'
+import { REGISTER } from '@/store/actions.type'
 export default {
   name: 'Register',
   data () {
@@ -44,21 +52,21 @@ export default {
     }
   },
   methods: {
-        async register () { 
-            await RegisterService.create({
-              email: this.customer.email,
-              user_password: this.customer.user_password,
-              f_name: this.customer.f_name,
-              l_name: this.customer.l_name
-            })
-            .then((response) => { 
-              response.data 
-              console.log(response.data)
-            })
-            .catch(error => {
-              throw new Error(error)
-            })
-        },
+    register () {
+      this.$store
+        .dispatch(REGISTER, {
+          email: this.customer.email,
+          user_password: this.customer.user_password,
+          f_name: this.customer.f_name,
+          l_name: this.customer.l_name
+        })
+        .then(() => this.$router.push({ name: 'home' }))
+    }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.errors
+    })
   }
 }
 </script>

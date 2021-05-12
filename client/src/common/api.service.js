@@ -55,8 +55,12 @@ export const SellerService = {
   }
 }
 
-export const RegisterService = {
+export const AuthenticationService = {
   create (body) {
     return ApiService.post('/register', { customer: body })
+  },
+
+  login (body) {
+    return ApiService.post('/login', { customer: body })
   }
 }
