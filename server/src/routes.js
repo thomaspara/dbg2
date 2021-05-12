@@ -28,7 +28,7 @@ module.exports = (app) => {
     app.post('/billinginfo/create',
         BillingInfoController.createBillingInfo)
     app.get('/billinginfo/:bill_id',
-        BillingInfoController.fetchBillingInfo)
+        BillingInfoController.fetchBillingInfo),
 
     //Cart
     app.post('/cart/create',
