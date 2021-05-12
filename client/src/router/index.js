@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Account from '@/components/Account'
 import ShoppingCart from '@/components/ShoppingCart'
+import Orders from '@/components/Orders'
 
 Vue.use(Router)
 
@@ -27,8 +28,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'login',
+      component: Login
     },
     {
       path: '/account',
@@ -39,6 +40,11 @@ export default new Router({
       path: '/shopping-cart',
       name: 'shopping-cart',
       component: ShoppingCart
+    },
+    {
+      path: '/orders',
+      name: 'orders',
+      component: Orders
     }
   ]
 })
