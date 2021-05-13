@@ -12,7 +12,7 @@ const getters = {
   isAuthenticated (state) {
     return state.isAuthenticated
   },
-  customerId (state) {
+  customer_id (state) {
     return state.customer.customer_id
   }
 }

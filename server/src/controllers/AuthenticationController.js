@@ -62,7 +62,7 @@ module.exports = {
             const customerJson = CUSTOMER.toJSON()
             res.status(200).send({
                 customer: {
-                    customer_id: customerJson.id,
+                    customer_id: customerJson.customer_id,
                     email: customerJson.email,
                     f_name: customerJson.f_name,
                     l_name: customerJson.l_name,
