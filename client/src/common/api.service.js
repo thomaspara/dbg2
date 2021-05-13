@@ -55,6 +55,18 @@ export const SellerService = {
   }
 }
 
+export const TransactionService = {
+  get (slug) {
+    return ApiService.get(`transaction/${slug}`)
+  },
+  create (body) {
+    return ApiService.post('transaction/create', { transaction: body })
+  },
+  query (slug) {
+    return ApiService.query(`transaction/query/${slug}`)
+  }
+}
+
 export const AuthenticationService = {
   create (body) {
     return ApiService.post('/register', { customer: body })

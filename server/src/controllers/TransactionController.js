@@ -3,7 +3,6 @@ const { Transaction } = require('../models')
 module.exports = {
     async createTransaction(req, res) {
         try {
-            console.log(req.body.transaction)
             const transaction = await Transaction.create({
                 customer_id: req.body.transaction.customer_id,
                 product_id: req.body.transaction.product_id,
@@ -38,6 +37,29 @@ module.exports = {
         } catch (err) {
             res.status(400).send({
                 error: 'Error trying to fetch transaction.'
+            })
+        }
+    },
+    async query (req, res) {
+        try {
+            const TRANSACTIONS = await Transaction.findAll({
+                where: {
+                    customer_id: req.params.customer_id
+                }
+            })
+            if (!TRANSACTIONS) {
+                return res.status(404).send({
+                    error: 'Unable to fetch transctions.'
+                })
+            } else {
+                res.send({
+                    transactions: TRANSACTIONS,
+                    transactionCount: TRANSACTIONS.length
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to fetch transactions.'
             })
         }
     }

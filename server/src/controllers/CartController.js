@@ -3,7 +3,6 @@ const { Cart } = require('../models')
 module.exports = {
     async createCart(req, res) {
         try {
-            console.log(req.body.cart)
             const cart = await Cart.create({
                 customer_id: req.body.cart.customer_id,
                 product_id: req.body.cart.bank_num
