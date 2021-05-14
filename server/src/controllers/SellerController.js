@@ -71,7 +71,7 @@ module.exports = {
     async deleteSeller (req, res) {
         try {
             const SELLER_ID = req.params.seller_id
-            const SELLER = await Seller.destory({
+            const SELLER = await Seller.destroy({
                 where: {
                     seller_id: SELLER_ID
                 }

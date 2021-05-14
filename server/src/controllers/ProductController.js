@@ -94,7 +94,7 @@ module.exports = {
     async deleteProduct (req, res) {
         try {
             const PRODUCT_ID = req.params.product_id
-            const PRODUCT = await Product.destory({
+            const PRODUCT = await Product.destroy({
                 where: {
                     product_id: PRODUCT_ID
                 }

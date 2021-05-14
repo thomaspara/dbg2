@@ -75,7 +75,7 @@ module.exports = {
     async deleteTransaction (req, res) {
         try {
             const TRANSACTION_ID = req.params.transaction_id
-            const TRANSACTION = await Transaction.destory({
+            const TRANSACTION = await Transaction.destroy({
                 where: {
                     transaction_id: TRANSACTION_ID
                 }

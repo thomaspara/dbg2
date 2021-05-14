@@ -71,7 +71,7 @@ module.exports = {
     async deleteBillingInfo (req, res) {
         try {
             const BILL_ID = req.params.bill_id
-            const BILLINGINFO = await BillingInfo.destory({
+            const BILLINGINFO = await BillingInfo.destroy({
                 where: {
                     bill_id: BILL_ID
                 }

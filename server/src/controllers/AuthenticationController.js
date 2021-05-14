@@ -14,12 +14,11 @@ function jwtSignCustomer (customer) {
 module.exports = {
     async register (req, res) {
         try {
-            const { email, user_password, f_name, l_name } = req.body.customer
             const CUSTOMER = await Customer.create({
-                email: email,
-                user_password: user_password,
-                f_name: f_name,
-                l_name: l_name
+                email: req.body.customer.email,
+                user_password: req.body.customer.user_password,
+                f_name: req.body.customer.f_name,
+                l_name: req.body.customer.l_name
             })
             const customerJson = CUSTOMER.toJSON()
             res.status(200).send({
@@ -136,7 +135,7 @@ module.exports = {
     async deleteCustomer (req, res) {
         try {
             const CUSTOMER_ID = req.params.customer_id
-            const CUSTOMER = await Customer.destory({
+            const CUSTOMER = await Customer.destroy({
                 where: {
                     customer_id: CUSTOMER_ID
                 }
