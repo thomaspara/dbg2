@@ -61,7 +61,7 @@ module.exports = {
             }
         } catch (err) {
             res.status(400).send({
-                error: 'Error trying to delete transaction.'
+                error: 'Error trying to fetch transaction.'
             })
         }
     },
