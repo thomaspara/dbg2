@@ -70,5 +70,29 @@ module.exports = {
                 error: 'Error trying to update transaction.'
             })
         }
+    },
+
+    async deleteTransaction (req, res) {
+        try {
+            const TRANSACTION_ID = req.params.transaction_id
+            const TRANSACTION = await Transaction.destory({
+                where: {
+                    transaction_id: TRANSACTION_ID
+                }
+            })
+            if (!TRANSACTION) {
+                return res.status(404).send({
+                    error: 'Unable to delete transaction.'
+                })
+            } else {
+                res.send({
+                    transaction: TRANSACTION
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to delete transaction.'
+            })
+        }
     }
 }

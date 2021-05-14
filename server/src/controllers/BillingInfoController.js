@@ -66,5 +66,29 @@ module.exports = {
                 error: 'Error trying to update BillingInfo.'
             })
         }
+    },
+
+    async deleteBillingInfo (req, res) {
+        try {
+            const BILL_ID = req.params.bill_id
+            const BILLINGINFO = await BillingInfo.destory({
+                where: {
+                    bill_id: BILL_ID
+                }
+            })
+            if (!BILLINGINFO) {
+                return res.status(404).send({
+                    error: 'Unable to delete BillingInfo.'
+                })
+            } else {
+                res.send({
+                    billingInfo: BILLINGINFO
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to delete BillingInfo.'
+            })
+        }
     }
 }

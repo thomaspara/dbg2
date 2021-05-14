@@ -89,5 +89,29 @@ module.exports = {
                 error: 'Error trying to update product.'
             })
         }
+    },
+
+    async deleteProduct (req, res) {
+        try {
+            const PRODUCT_ID = req.params.product_id
+            const PRODUCT = await Product.destory({
+                where: {
+                    product_id: PRODUCT_ID
+                }
+            })
+            if (!PRODUCT) {
+                return res.status(404).send({
+                    error: 'Unable to delete Product.'
+                })
+            } else {
+                res.send({
+                    product: PRODUCT
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to delete Product.'
+            })
+        }
     }
 }

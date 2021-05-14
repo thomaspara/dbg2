@@ -131,5 +131,29 @@ module.exports = {
                 error: 'Error trying to update customer.'
             })
         }
+    },
+
+    async deleteCustomer (req, res) {
+        try {
+            const CUSTOMER_ID = req.params.customer_id
+            const CUSTOMER = await Customer.destory({
+                where: {
+                    customer_id: CUSTOMER_ID
+                }
+            })
+            if (!CUSTOMER) {
+                return res.status(404).send({
+                    error: 'Unable to delete Customer.'
+                })
+            } else {
+                res.send({
+                    customer: CUSTOMER,
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to delete Customer.',
+            })
+        }
     }
 }
