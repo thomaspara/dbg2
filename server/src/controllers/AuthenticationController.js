@@ -14,12 +14,11 @@ function jwtSignCustomer (customer) {
 module.exports = {
     async register (req, res) {
         try {
-            const { email, user_password, f_name, l_name } = req.body.customer
             const CUSTOMER = await Customer.create({
-                email: email,
-                user_password: user_password,
-                f_name: f_name,
-                l_name: l_name
+                email: req.body.customer.email,
+                user_password: req.body.customer.user_password,
+                f_name: req.body.customer.f_name,
+                l_name: req.body.customer.l_name
             })
             const customerJson = CUSTOMER.toJSON()
             res.status(200).send({
@@ -92,13 +91,67 @@ module.exports = {
                 })
             } else {
                 res.send({
-                    customers: CUSTOMER,
+                    customer: CUSTOMER,
                     customersCount: CUSTOMER.length
                 })
             }
         } catch (err) {
             res.status(400).send({
                 error: 'Error trying to fetch customer.'
+            })
+        }
+    },
+
+    async editCustomer (req, res) {
+        try {
+            const CUSTOMER_ID = req.params.customer_id
+            const CUSTOMER = await Customer.update(
+                {
+                    email: req.body.customer.email,
+                    user_password: req.body.customer.user_password,
+                    f_name: req.body.customer.f_name,
+                    l_name: req.body.customer.l_name
+                },
+                {where: {
+                    customer_id: CUSTOMER_ID
+                }}
+            )
+            if (!CUSTOMER) {
+                return res.status(404).send({
+                    error: 'Unable to update customer.'
+                })
+            } else {
+                res.send({
+                    customer: CUSTOMER,
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to update customer.'
+            })
+        }
+    },
+
+    async deleteCustomer (req, res) {
+        try {
+            const CUSTOMER_ID = req.params.customer_id
+            const CUSTOMER = await Customer.destroy({
+                where: {
+                    customer_id: CUSTOMER_ID
+                }
+            })
+            if (!CUSTOMER) {
+                return res.status(404).send({
+                    error: 'Unable to delete Customer.'
+                })
+            } else {
+                res.send({
+                    customer: CUSTOMER,
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to delete Customer.',
             })
         }
     }
