@@ -49,7 +49,7 @@ module.exports = {
             })
             if (!TRANSACTIONS) {
                 return res.status(404).send({
-                    error: 'Unable to fetch transctions.'
+                    error: 'Unable to fetch transactions.'
                 })
             } else {
                 res.send({
