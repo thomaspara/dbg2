@@ -7,6 +7,7 @@
             <p>Product Description: {{ product.product_description }}</p>
             <p>Product ID: {{ product.product_id }}</p>
             <p>${{ product.price }}</p>
+            <p>seller: {{ product.seller.seller_name }}</p>
             <font-awesome-icon @click="addCart()" class="plus-icon" :icon="['fas', 'plus-circle']" />
         </div>
     </div>
