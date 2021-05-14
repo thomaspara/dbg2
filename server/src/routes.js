@@ -14,27 +14,34 @@ module.exports = (app) => {
         AuthenticationController.register)
     app.post('/login',
         AuthenticationController.login)
-    //remove if ever deployed
     app.get('/customer/:customer_id',
         AuthenticationController.fetchCustomer)
+    app.put('/customer/edit/:customer_id',
+        AuthenticationController.editCustomer)
 
     // Seller
     app.post('/seller/create',
         SellerController.createSeller)
     app.get('/seller/:seller_id',
         SellerController.fetchSeller)
+    app.put('/seller/edit/:seller_id',
+        SellerController.editSeller)
 
     //BillingInfo
     app.post('/billinginfo/create',
         BillingInfoController.createBillingInfo)
     app.get('/billinginfo/:bill_id',
-        BillingInfoController.fetchBillingInfo),
+        BillingInfoController.fetchBillingInfo)
+    app.put('/billinginfo/edit/:bill_id',
+        BillingInfoController.editBillingInfo)
 
     //Cart
     app.post('/cart/create',
         CartController.createCart)
     app.get('/cart/:cart_id',
         CartController.fetchCart)
+    app.put('/cart/edit/:cart_id',
+        CartController.editCart)
 
     //Product
     app.post('/product/create',
@@ -43,10 +50,14 @@ module.exports = (app) => {
         ProductController.query)
     app.get('/product/:product_id',
         ProductController.fetchProduct) // FETCH MUST BE LAST ROUTE
+    app.put('/product/edit/:product_id',
+        ProductController.editProduct)
 
     //Transaction
     app.post('/transaction/create',
         TransactionController.createTransaction)
     app.get('/transaction/:transaction_id',
         TransactionController.fetchTransaction)
+    app.put('/transaction/edit/:transaction_id',
+        TransactionController.editTransaction)
 }
