@@ -1,4 +1,5 @@
 const { Product } = require('../models')
+const { Seller } = require('../models')
 
 module.exports = {
     async createProduct(req, res) {
@@ -30,14 +31,21 @@ module.exports = {
                     error: 'Unable to fetch product.'
                 })
             } else {
+                var tempSeller = await Seller.findOne({
+                    where: {
+                        seller_id: PRODUCT.seller_id
+                    }
+                })
                 res.send({
-                    product: PRODUCT
+                    product: PRODUCT,
+                    seller: tempSeller
                 })
             }
         } catch (err) {
             res.status(400).send({
                 error: 'Error trying to fetch product.'
             })
+            console.log(err)
         }
     },
 

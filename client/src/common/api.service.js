@@ -9,6 +9,12 @@ const ApiService = {
     Vue.axios.defaults.baseURL = API_URL
   },
 
+  get (resource, slug = '') {
+    return Vue.axios.get(`${resource}/${slug}`).catch(error => {
+      throw new Error(`ApiService ${error}`)
+    })
+  },
+
   query (resource, params) {
     return Vue.axios.get(resource, params).catch(error => {
       throw new Error(`ApiService ${error}`)

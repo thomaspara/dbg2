@@ -16,6 +16,7 @@
 /* eslint-disable */
 import Navbar from './Navbar.vue'
 import { ProductService } from '@/common/api.service.js'
+import { SellerService } from '@/common/api.service.js'
 export default {
     name: 'Home',
     components: {
@@ -36,15 +37,32 @@ export default {
         async fetchProducts () {
             // fetches ALL products in our database
             await ProductService.query()
-                .then(({ data }) => {
-                    console.log(data)
-                    this.products =  data.products
+                .then((res) => {
+                    var tempProducts = []
+                    //console.log(res.data.products)
+                    res.data.products.forEach(product => {
+                        let tempSeller = this.getRelatedSeller(product)
+                        tempSeller.then(s => {
+                            //console.log(s)
+                            tempProducts.push(
+                                Object.assign(product, { seller: s.data.seller })
+                            )
+                        })
+                    })
+                    this.products =  tempProducts
                     // Sets our products[] to the fulfilled promise's products[]
                 })
                 .catch(error => {
                     throw new Error(error)
                 })
         },
+        async getRelatedSeller (product) {
+            return await SellerService.get(product.seller_id)
+            // .then(({ data }) => {
+            //     return data
+            // })
+
+        }
     }
 };
 </script>
