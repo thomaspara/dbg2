@@ -66,5 +66,29 @@ module.exports = {
                 error: 'Error trying to update Seller.'
             })
         }
+    },
+
+    async deleteSeller (req, res) {
+        try {
+            const SELLER_ID = req.params.seller_id
+            const SELLER = await Seller.destroy({
+                where: {
+                    seller_id: SELLER_ID
+                }
+            })
+            if (!SELLER) {
+                return res.status(404).send({
+                    error: 'Unable to delete Seller.'
+                })
+            } else {
+                res.send({
+                    seller: SELLER
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to delete Seller.'
+            })
+        }
     }
 }
