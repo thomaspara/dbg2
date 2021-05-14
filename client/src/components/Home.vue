@@ -39,18 +39,16 @@ export default {
             await ProductService.query()
                 .then((res) => {
                     var tempProducts = []
-                    //console.log(res.data.products)
                     res.data.products.forEach(product => {
                         let tempSeller = this.getRelatedSeller(product)
                         tempSeller.then(s => {
-                            //console.log(s)
                             tempProducts.push(
                                 Object.assign(product, { seller: s.data.seller })
                             )
                         })
                     })
                     this.products =  tempProducts
-                    // Sets our products[] to the fulfilled promise's products[]
+                    // Sets our products[] to the fulfilled promise's products[], joined with related sellers
                 })
                 .catch(error => {
                     throw new Error(error)
@@ -58,10 +56,6 @@ export default {
         },
         async getRelatedSeller (product) {
             return await SellerService.get(product.seller_id)
-            // .then(({ data }) => {
-            //     return data
-            // })
-
         }
     }
 };
