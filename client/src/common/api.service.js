@@ -39,16 +39,28 @@ const ApiService = {
 export default ApiService
 
 export const ProductService = {
-  query (type, params) {
-    return ApiService.query('product/query', {
-      params: params
-    })
-  },
   get (slug) {
     return ApiService.get(`product/${slug}`)
   },
   create (body) {
     return ApiService.post('product/create', { product: body })
+  },
+  query (type, params) {
+    return ApiService.query('product/query', {
+      params: params
+    })
+  }
+}
+
+export const CartService = {
+  get (slug) {
+    return ApiService.get(`cart/${slug}`)
+  },
+  create (body) {
+    return ApiService.post('cart/create', { cart: body })
+  },
+  query (slug) {
+    return ApiService.query(`cart/query/${slug}`)
   }
 }
 
@@ -57,7 +69,7 @@ export const SellerService = {
     return ApiService.get(`seller/${slug}`)
   },
   create (body) {
-    return ApiService.post('seller/create', { product: body })
+    return ApiService.post('seller/create', { seller: body })
   }
 }
 

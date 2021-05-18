@@ -66,7 +66,8 @@ module.exports = {
                 })
             } else {
                 res.send({
-                    cart: CART
+                    cart: CART,
+                    product_count: CART.length
                 })
             }
         } catch (err) {
