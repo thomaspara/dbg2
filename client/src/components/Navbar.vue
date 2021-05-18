@@ -2,6 +2,7 @@
     <ul>
         <li><router-link class="menu_brand-name" to="/home">Retail Store</router-link></li>
         <li><router-link class="menu_options" to="/account">Account</router-link></li>
+        <li><router-link class="menu_options" to="/orders">Order History</router-link></li>
         <li><router-link class="menu_options" to="/shopping-cart"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></router-link></li>
     </ul>
 </template>

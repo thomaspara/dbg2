@@ -5,8 +5,9 @@
         <div v-for="product in products" :key=product.product_id class="product-card">
             <p>{{ product.product_name }}</p>
             <p>Product Description: {{ product.product_description }}</p>
-            <p>Product ID: {{ product.seller_id }}</p>
+            <p>Product ID: {{ product.product_id }}</p>
             <p>${{ product.price }}</p>
+            <p>seller: {{ product.seller.seller_name }}</p>
             <font-awesome-icon @click="addCart()" class="plus-icon" :icon="['fas', 'plus-circle']" />
         </div>
     </div>
@@ -16,6 +17,7 @@
 /* eslint-disable */
 import Navbar from './Navbar.vue'
 import { ProductService } from '@/common/api.service.js'
+import { SellerService } from '@/common/api.service.js'
 export default {
     name: 'Home',
     components: {
@@ -33,18 +35,29 @@ export default {
         addCart() {
             alert("Item has been added to cart");
         },
-        async fetchProducts () { 
+        async fetchProducts () {
             // fetches ALL products in our database
             await ProductService.query()
-                .then(({ data }) => {
-                    console.log(data)
-                    this.products =  data.products 
-                    // Sets our products[] to the fulfilled promise's products[]
+                .then((res) => {
+                    var tempProducts = []
+                    res.data.products.forEach(product => {
+                        let tempSeller = this.getRelatedSeller(product)
+                        tempSeller.then(s => {
+                            tempProducts.push(
+                                Object.assign(product, { seller: s.data.seller })
+                            )
+                        })
+                    })
+                    this.products =  tempProducts
+                    // Sets our products[] to the fulfilled promise's products[], joined with related sellers
                 })
                 .catch(error => {
                     throw new Error(error)
                 })
         },
+        async getRelatedSeller (product) {
+            return await SellerService.get(product.seller_id)
+        }
     }
 };
 </script>
