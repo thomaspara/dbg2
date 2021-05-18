@@ -3,7 +3,6 @@ const { BillingInfo } = require('../models')
 module.exports = {
     async createBillingInfo (req, res) {
         try {
-            console.log(req.body.billingInfo)
             const billingInfo = await BillingInfo.create({
                 bank_num: req.body.billingInfo.bank_num,
                 customer_id: req.body.billingInfo.customer_id

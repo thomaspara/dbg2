@@ -3,7 +3,6 @@ const { Seller } = require('../models')
 module.exports = {
     async createSeller (req, res) {
         try {
-            console.log(req.body.seller)
             const seller = await Seller.create({
                 seller_name: req.body.seller.seller_name,
                 seller_description: req.body.seller.seller_description

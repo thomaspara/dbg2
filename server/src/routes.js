@@ -66,6 +66,8 @@ module.exports = (app) => {
     //Transaction
     app.post('/transaction/create',
         TransactionController.createTransaction)
+    app.get('/transaction/query/:customer_id',
+        TransactionController.query)
     app.get('/transaction/:transaction_id',
         TransactionController.fetchTransaction)
     app.put('/transaction/edit/:transaction_id',
