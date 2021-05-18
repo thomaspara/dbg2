@@ -48,6 +48,8 @@ module.exports = (app) => {
         CartController.fetchCart)
     app.put('/cart/edit/:cart_id',
         CartController.editCart)
+    app.get('/cart/query/:customer_id',
+        CartController.queryCart)
     app.delete('/cart/delete/:cart_id',
         CartController.deleteCart)
 
