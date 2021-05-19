@@ -153,7 +153,7 @@ export default {
         //         })
         // },
         async updateCustomer () {
-            await AuthenticationService.post(this.$store.getters.customer_id)
+            await AuthenticationService.put(this.$store.getters.customer_id)
                 .then(({ data }) => {
                     this.customer =  data.customer
                 })
