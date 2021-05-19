@@ -96,5 +96,9 @@ export const AuthenticationService = {
 
   get (slug) {
     return ApiService.get(`customer/${slug}`)
+  },
+
+  post (slug) {
+    return ApiService.post(`customer/${slug}`)
   }
 }
