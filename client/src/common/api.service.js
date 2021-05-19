@@ -99,5 +99,9 @@ export const AuthenticationService = {
 
   get (slug) {
     return ApiService.get(`customer/${slug}`)
+  },
+
+  put (slug, body) {
+    return ApiService.put(`/customer/edit/${slug}`, { customer: body })
   }
 }
