@@ -64,15 +64,6 @@ export const CartService = {
   }
 }
 
-export const SellerService = {
-  get (slug) {
-    return ApiService.get(`seller/${slug}`)
-  },
-  create (body) {
-    return ApiService.post('seller/create', { seller: body })
-  }
-}
-
 export const TransactionService = {
   get (slug) {
     return ApiService.get(`transaction/${slug}`)
@@ -82,6 +73,15 @@ export const TransactionService = {
   },
   query (slug) {
     return ApiService.query(`transaction/query/${slug}`)
+  }
+}
+
+export const SellerService = {
+  get (slug) {
+    return ApiService.get(`seller/${slug}`)
+  },
+  create (body) {
+    return ApiService.post('seller/create', { seller: body })
   }
 }
 

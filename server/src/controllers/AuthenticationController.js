@@ -18,7 +18,12 @@ module.exports = {
                 email: req.body.customer.email,
                 user_password: req.body.customer.user_password,
                 f_name: req.body.customer.f_name,
-                l_name: req.body.customer.l_name
+                l_name: req.body.customer.l_name,
+                address: req.body.customer.address,
+                apt: req.body.customer.apt,
+                city: req.body.customer.city,
+                state: req.body.customer.state,
+                zip_code: req.body.customer.zip_code
             })
             const customerJson = CUSTOMER.toJSON()
             res.status(200).send({
@@ -27,6 +32,11 @@ module.exports = {
                     email: customerJson.email,
                     f_name: customerJson.f_name,
                     l_name: customerJson.l_name,
+                    address: customerJson.address,
+                    apt: customerJson.apt,
+                    city: customerJson.city,
+                    state: customerJson.state,
+                    zip_code: customerJson.zip_code,
                     createdAt: customerJson.createdAt,
                     updatedAt: customerJson.updatedAt
                 },
@@ -110,7 +120,12 @@ module.exports = {
                     email: req.body.customer.email,
                     user_password: req.body.customer.user_password,
                     f_name: req.body.customer.f_name,
-                    l_name: req.body.customer.l_name
+                    l_name: req.body.customer.l_name,
+                    address: req.body.customer.address,
+                    apt: req.body.customer.apt,
+                    city: req.body.customer.city,
+                    state: req.body.customer.state,
+                    zip_code: req.body.customer.zip_code
                 },
                 {where: {
                     customer_id: CUSTOMER_ID

@@ -9,7 +9,12 @@ module.exports = {
             ),
             //customer_id: Joi.number().integer(),
             f_name: Joi.string(),
-            l_name: Joi.string()
+            l_name: Joi.string(),
+            address: Joi.string(),
+            apt: Joi.string(),
+            city: Joi.string(),
+            state: Joi.string(),
+            zip_code: Joi.string()
         })
         // DEPRECATED VERSION
         //                   = Joi.validate(req.body, schema);
