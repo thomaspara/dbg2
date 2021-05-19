@@ -3,12 +3,15 @@
         <Navbar></Navbar>
         <span class="span_break"></span>
         <div v-for="product in products" :key=product.product_id class="product-card">
-            <p>{{ product.product_name }}</p>
+            <font-awesome-icon class="product-icon" :icon="['fas', 'tshirt']"/>
+            <h2 class="product-name">{{ product.product_name }}</h2>
             <p>Product Description: {{ product.product_description }}</p>
             <p>Product ID: {{ product.product_id }}</p>
-            <p>${{ product.price }}</p>
-            <p>seller: {{ product.seller.seller_name }}</p>
-            <font-awesome-icon @click="addCart()" class="plus-icon" :icon="['fas', 'plus-circle']" />
+            <p>Seller: {{ product.seller.seller_name }}</p>
+            <div class="sub-card">
+                <p class="product-price">${{ product.price }}</p>
+                <font-awesome-icon @click="addCart()" class="plus-icon" :icon="['fas', 'plus-circle']" />
+            </div>
         </div>
     </div>
 </template>
@@ -63,12 +66,4 @@ export default {
 </script>
 
 <style scoped>
-.plus-icon {
-    color: #AF38FB;
-    cursor: pointer;
-    float: right;
-    margin-bottom: 1em;
-    margin-right: 1em;
-    font-size: 1.33em;
-}
 </style>
