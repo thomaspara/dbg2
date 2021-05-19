@@ -133,29 +133,20 @@ export default {
                     throw new Error(error)
                 })
         },
-        // async updateCustomer () {
-        //     await AuthenticationService.post({
-        //         f_name: this.customer.f_name,
-        //         l_name: this.customer.l_name,
-        //         email: this.customer.email,
-        //         user_password: this.customer.user_password,
-        //         address: this.customer.address,
-        //         apt_num: this.customer.apt_num,
-        //         city: this.customer.city,
-        //         state: this.customer.state,
-        //         zip_code: this.customer.zip_code
-        //     })
-        //         .then(({ data }) => {
-        //             // this.customer =  data.customer
-        //         })
-        //         .catch(error => {
-        //             throw new Error(error)
-        //         })
-        // },
         async updateCustomer () {
-            await AuthenticationService.put(this.$store.getters.customer_id)
+            await AuthenticationService.put(this.$store.getters.customer_id, {
+                    f_name: this.customer.f_name,
+                    l_name: this.customer.l_name,
+                    email: this.customer.email,
+                    user_password: this.customer.user_password,
+                    address: this.customer.address,
+                    apt_num: this.customer.apt_num,
+                    city: this.customer.city,
+                    state: this.customer.state,
+                    zip_code: this.customer.zip_code
+            })
                 .then(({ data }) => {
-                    this.customer =  data.customer
+                    // this.customer =  data.customer
                 })
                 .catch(error => {
                     throw new Error(error)
