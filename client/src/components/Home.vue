@@ -10,7 +10,7 @@
             <p>Seller: {{ product.seller.seller_name }}</p>
             <div class="sub-card">
                 <p class="product-price">${{ product.price }}</p>
-                <font-awesome-icon @click="addCart()" class="plus-icon" :icon="['fas', 'plus-circle']" />
+                <font-awesome-icon @click="addCart(product)" class="plus-icon" :icon="['fas', 'plus-circle']" />
             </div>
         </div>
     </div>
@@ -21,6 +21,7 @@
 import Navbar from './Navbar.vue'
 import { ProductService } from '@/common/api.service.js'
 import { SellerService } from '@/common/api.service.js'
+import { CartService } from '@/common/api.service.js'
 export default {
     name: 'Home',
     components: {
@@ -35,8 +36,17 @@ export default {
         this.fetchProducts();
     },
     methods: {
-        addCart() {
-            alert("Item has been added to cart");
+        async addCart(product) {
+            await CartService.create({
+                product_id: product.product_id,
+                customer_id: this.$store.getters.customer_id,
+                quantity: 1
+            }).then((res) => {
+                console.log(res)
+            })
+            .catch(error => {
+                throw new Error(error)
+            })
         },
         async fetchProducts () {
             // fetches ALL products in our database
