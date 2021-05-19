@@ -13,7 +13,8 @@ module.exports = {
             if (!CART) {
                 const cart = await Cart.create({
                     customer_id: req.body.cart.customer_id,
-                    product_id: req.body.cart.product_id
+                    product_id: req.body.cart.product_id,
+                    quantity: req.body.cart.quantity
                 })
                 res.status(200).send(cart)
             } else {
