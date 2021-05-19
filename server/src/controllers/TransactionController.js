@@ -5,8 +5,7 @@ module.exports = {
         try {
             const transaction = await Transaction.create({
                 customer_id: req.body.transaction.customer_id,
-                product_id: req.body.transaction.product_id,
-                seller_id: req.body.transaction.seller_id,
+                bill_id: req.body.transaction.bill_id,
                 total_cost: req.body.transaction.total_cost,
             })
             res.status(200).send(transaction)
@@ -72,8 +71,7 @@ module.exports = {
             const TRANSACTION = await Transaction.update(
                 {
                     customer_id: req.body.transaction.customer_id,
-                    product_id: req.body.transaction.product_id,
-                    seller_id: req.body.transaction.seller_id,
+                    bill_id: req.body.transaction.bill_id,
                     total_cost: req.body.transaction.total_cost,
                 },
                 {where: {

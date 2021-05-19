@@ -13,7 +13,8 @@ module.exports = {
             if (!CART) {
                 const cart = await Cart.create({
                     customer_id: req.body.cart.customer_id,
-                    product_id: req.body.cart.product_id
+                    product_id: req.body.cart.product_id,
+                    quantity: req.body.cart.quantity
                 })
                 res.status(200).send(cart)
             } else {
@@ -66,10 +67,12 @@ module.exports = {
                 })
             } else {
                 res.send({
-                    cart: CART
+                    cart: CART,
+                    product_count: CART.length
                 })
             }
         } catch (err) {
+            console.log(err)
             res.status(400).send({
                 error: 'Error trying to query cart.'
             })

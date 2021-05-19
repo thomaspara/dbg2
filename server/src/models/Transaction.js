@@ -14,20 +14,12 @@ module.exports = (sequelize, DataTypes) => {
           key: 'customer_id'
         }
       },
-      product_id: { // Foreign Key
+      bill_id: { // Foreign Key
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'Products',
-          key: 'product_id'
-        }
-      },
-      seller_id: { // Foreign Key
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Sellers',
-          key: 'seller_id'
+          model: 'BillingInfos',
+          key: 'bill_id'
         }
       },
       total_cost: DataTypes.DOUBLE
