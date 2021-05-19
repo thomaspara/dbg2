@@ -16,11 +16,11 @@ const getters = {
   }
 }
 
-export const actions = {
+const actions = {
   async [QUERY_CART] (context, customerSlug) {
-    const { data } = await CartService.query(customerSlug).then(() => {
-      context.commit(SET_CART, data.cart)
-      return data
+    await CartService.query(customerSlug).then(res => {
+      context.commit(SET_CART, res.data.cart)
+      return res.data
     })
   }
 }

@@ -50,7 +50,7 @@
 <script>
 /* eslint-disable */
 import Navbar from './Navbar.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { QUERY_CART } from '@/store/actions.type'
 export default {
   name: 'Account',
@@ -67,9 +67,10 @@ export default {
     this.FEcart = this.$store.getters.cart
   },
   methods: {
+    ...mapActions([QUERY_CART]),
 
-      queryCart () {
-        this.$store.dispatch(QUERY_CART, this.$store.getters.customer_id)
+      async queryCart () {
+        await this.$store.dispatch('cart/queryCart', this.$store.getters.customer_id)
       }
   },
     computed: {
