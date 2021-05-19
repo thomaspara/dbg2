@@ -10,11 +10,11 @@ module.exports = {
             //customer_id: Joi.number().integer(),
             f_name: Joi.string(),
             l_name: Joi.string(),
-            address: Joi.string(),
-            apt: Joi.string(),
-            city: Joi.string(),
-            state: Joi.string(),
-            zip_code: Joi.string()
+            address: Joi.string().allow(null, ''),
+            apt_num: Joi.string().allow(null, ''),
+            city: Joi.string().allow(null, ''),
+            state: Joi.string().allow(null, ''),
+            zip_code: Joi.string().allow(null, '')
         })
         // DEPRECATED VERSION
         //                   = Joi.validate(req.body, schema);

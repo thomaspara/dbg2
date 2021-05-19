@@ -20,7 +20,7 @@ module.exports = {
                 f_name: req.body.customer.f_name,
                 l_name: req.body.customer.l_name,
                 address: req.body.customer.address,
-                apt: req.body.customer.apt,
+                apt_num: req.body.customer.apt_num,
                 city: req.body.customer.city,
                 state: req.body.customer.state,
                 zip_code: req.body.customer.zip_code
@@ -33,7 +33,7 @@ module.exports = {
                     f_name: customerJson.f_name,
                     l_name: customerJson.l_name,
                     address: customerJson.address,
-                    apt: customerJson.apt,
+                    apt_num: customerJson.apt_num,
                     city: customerJson.city,
                     state: customerJson.state,
                     zip_code: customerJson.zip_code,
@@ -122,7 +122,7 @@ module.exports = {
                     f_name: req.body.customer.f_name,
                     l_name: req.body.customer.l_name,
                     address: req.body.customer.address,
-                    apt: req.body.customer.apt,
+                    apt_num: req.body.customer.apt_num,
                     city: req.body.customer.city,
                     state: req.body.customer.state,
                     zip_code: req.body.customer.zip_code
