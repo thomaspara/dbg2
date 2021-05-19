@@ -5,13 +5,13 @@ import App from './App'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShoppingCart, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faPlusCircle, faTshirt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import ApiService from './common/api.service'
 import store from './store'
 import './assets/styles/app.css'
 
-library.add(faShoppingCart, faPlusCircle)
+library.add(faShoppingCart, faPlusCircle, faTshirt)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 

@@ -9,21 +9,21 @@
                 <input
                     class="form_input"
                     type="text"
-                    name="firstname"
-                    placeholder="First Name"
+                    v-model="customer.f_name"
+                    placeholder="customer.f_name"
                 />
                 <input
                     class="form_input"
                     type="text"
-                    name="lastname"
-                    placeholder="Last Name"
+                    v-model="customer.l_name"
+                    placeholder="customer.l_name"
                 />
-                <input class="form_input" type="text" name="email" placeholder="Email" />
+                <input class="form_input" type="text" v-model="customer.email" placeholder="customer.email" />
                 <input
                     class="form_input"
-                    type="text"
-                    name="password"
-                    placeholder="Password"
+                    type="password"
+                    v-model="customer.user_password"
+                    placeholder="customer.user_password"
                 />
             </form>
             <h2 class="page-name">Address</h2>
@@ -86,7 +86,7 @@
 <script>
 /* eslint-disable */
 import Navbar from './Navbar.vue'
-// import { ProductService } from '@/common/api.service.js' => CustomerService
+import { AuthenticationService } from '@/common/api.service.js'
 export default {
     name: 'Account',
     components: {
@@ -94,7 +94,12 @@ export default {
     },
     data () {
         return {
-            customer:{}
+            customer: {
+                f_name: '',
+                l_name: '',
+                email: '',
+                user_password: ''
+            }
         }
     },
     created() {
@@ -102,11 +107,9 @@ export default {
     },
     methods: {
         async fetchCustomer () {
-            // fetches ALL customer in our database
-            await CustomerService.query()
+            await AuthenticationService.get(this.$store.getters.customer_id)
                 .then(({ data }) => {
                     this.customer =  data.customer
-                    // Sets our customer[] to the fulfilled promise's customer[]
                 })
                 .catch(error => {
                     throw new Error(error)

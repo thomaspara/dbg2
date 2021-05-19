@@ -23,11 +23,14 @@
       />
       <input
         class="form_input"
-        type="text"
+        type="password"
         v-model="customer.user_password"
         placeholder="Password"
       />
     </form>
+    <p class="login-link">
+      *8 characters minimum required and no special characters*
+    </p>
     <p class="login-link">
       Already Registered?
       <router-link class="router_link" to="/login">Login</router-link>

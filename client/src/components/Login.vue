@@ -6,7 +6,7 @@
       <input class="form_input" type="text" v-model="customer.email" name="email" placeholder="Email" />
       <input
         class="form_input"
-        type="text"
+        type="password"
         name="password"
         placeholder="Password"
         v-model="customer.user_password"
