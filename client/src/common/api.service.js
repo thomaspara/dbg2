@@ -9,6 +9,12 @@ const ApiService = {
     Vue.axios.defaults.baseURL = API_URL
   },
 
+  get (resource, slug = '') {
+    return Vue.axios.get(`${resource}/${slug}`).catch(error => {
+      throw new Error(`ApiService ${error}`)
+    })
+  },
+
   query (resource, params) {
     return Vue.axios.get(resource, params).catch(error => {
       throw new Error(`ApiService ${error}`)
@@ -55,8 +61,24 @@ export const SellerService = {
   }
 }
 
-export const RegisterService = {
+export const TransactionService = {
+  get (slug) {
+    return ApiService.get(`transaction/${slug}`)
+  },
+  create (body) {
+    return ApiService.post('transaction/create', { transaction: body })
+  },
+  query (slug) {
+    return ApiService.query(`transaction/query/${slug}`)
+  }
+}
+
+export const AuthenticationService = {
   create (body) {
     return ApiService.post('/register', { customer: body })
+  },
+
+  login (body) {
+    return ApiService.post('/login', { customer: body })
   }
 }

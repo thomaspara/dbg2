@@ -1,4 +1,5 @@
 const { Product } = require('../models')
+const { Seller } = require('../models')
 
 module.exports = {
     async createProduct(req, res) {
@@ -30,14 +31,21 @@ module.exports = {
                     error: 'Unable to fetch product.'
                 })
             } else {
+                var tempSeller = await Seller.findOne({
+                    where: {
+                        seller_id: PRODUCT.seller_id
+                    }
+                })
                 res.send({
-                    product: PRODUCT
+                    product: PRODUCT,
+                    seller: tempSeller
                 })
             }
         } catch (err) {
             res.status(400).send({
                 error: 'Error trying to fetch product.'
             })
+            console.log(err)
         }
     },
 
@@ -57,6 +65,60 @@ module.exports = {
         } catch (err) {
             res.status(400).send({
                 error: 'Error trying to fetch products.'
+            })
+        }
+    },
+
+    async editProduct (req, res) {
+        try {
+            const PRODUCT_ID = req.params.product_id
+            const PRODUCT = await Product.update(
+                {
+                    product_name: req.body.product.product_name,
+                    price: req.body.product.price,
+                    product_description: req.body.product.product_description,
+                    seller_id: req.body.product.seller_id
+                },
+                {where: {
+                    product_id: PRODUCT_ID
+                }}
+            )
+            if (!PRODUCT) {
+                return res.status(404).send({
+                    error: 'Unable to update product.'
+                })
+            } else {
+                res.send({
+                    product: PRODUCT
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to update product.'
+            })
+        }
+    },
+
+    async deleteProduct (req, res) {
+        try {
+            const PRODUCT_ID = req.params.product_id
+            const PRODUCT = await Product.destroy({
+                where: {
+                    product_id: PRODUCT_ID
+                }
+            })
+            if (!PRODUCT) {
+                return res.status(404).send({
+                    error: 'Unable to delete Product.'
+                })
+            } else {
+                res.send({
+                    product: PRODUCT
+                })
+            }
+        } catch (err) {
+            res.status(400).send({
+                error: 'Error trying to delete Product.'
             })
         }
     }
