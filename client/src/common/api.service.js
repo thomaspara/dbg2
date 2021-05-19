@@ -61,6 +61,9 @@ export const CartService = {
   },
   query (slug) {
     return ApiService.query(`cart/query/${slug}`)
+  },
+  delete (slug) {
+    return ApiService.delete(`cart/delete/${slug}`)
   }
 }
 
