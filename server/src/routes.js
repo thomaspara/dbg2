@@ -40,6 +40,8 @@ module.exports = (app) => {
         BillingInfoController.editBillingInfo)
     app.delete('/billinginfo/delete/:bill_id',
         BillingInfoController.deleteBillingInfo)
+    app.get('/billinginfo/query/:customer_id',
+        BillingInfoController.queryBillingInfo)
 
     //Cart
     app.post('/cart/create',
