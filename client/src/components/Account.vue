@@ -69,10 +69,10 @@
                 <input
                     class="form_input"
                     type="text"
-                    name="bank_num"
-                    placeholder="bank_num"
+                    name="billing_infos[0].bank_num"
+                    :placeholder="billing_infos[0].bank_num"
                 />
-                <div to="/home" class="button" @click="fetchBank()">Bank Info</div>
+                <div to="/home" class="button" @click="fetchBank()">Save Bank Info</div>
             </form>
             <form action="#" v-show="show">
                 Card Number:
@@ -82,10 +82,10 @@
                     name="bank_num"
                     placeholder="bank_num"
                 />
-                <div to="/home" class="button" @click="fetchBank()">Bank Info</div>
+                <div to="/home" class="button" @click="fetchBank()">Save Bank Info</div>
             </form>
             <p class="card-link" @click="showNewCard()">Add another card</p>
-            <div to="/home" class="button" @click="updateCustomer()">Details</div>
+            <div to="/home" class="button" @click="updateCustomer()">Save Details</div>
         </div>
     </div>
 </template>

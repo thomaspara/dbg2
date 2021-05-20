@@ -2,10 +2,9 @@
     <div>
         <Navbar></Navbar>
         <span class="span_break"></span>
-        <div class="card">
-            <h1 class="brand-name">Order History</h1>
-        </div>
+        <h1 class="page-title">Order History</h1>
         <div v-for="transaction in transactions" :key=transaction.transaction_id class="product-card">
+            <p>{{ transaction.product.createdAt }}</p>
             <p>{{ transaction.product.product_name }}</p>
             <p>Total Cost: ${{ transaction.total_cost }}</p>
         </div>
@@ -44,6 +43,7 @@ export default {
                                 t.data,
                                 {
                                     total_cost: transaction.total_cost
+
                                 })
                             )
                         })

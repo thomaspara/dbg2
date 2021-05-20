@@ -2,7 +2,11 @@
   <div>
     <Navbar></Navbar>
     <span class="span_break"></span>
-    <div class="shoppingcart-column">
+    <div v-show="showDone" class="shoppingcart-column">
+        <h1 class="brand-name-cart">Order Submitted!</h1>
+        <p>Congrats! Continue Shopping</p>
+    </div>
+    <div v-show="show" class="shoppingcart-column">
       <h1 class="brand-name-cart">Shopping Cart</h1>
       <div class="col-md-4">
         <div
@@ -41,7 +45,7 @@
           <a class="btn btn-continueShipping mt-2 text-white" href="/home"
             >Continue Shopping</a
           >
-          <a class="btn btn-checkout mt-2 text-white">Submit Order</a>
+          <a class="btn btn-checkout mt-2 text-white" @click="orderSubmit()">Submit Order</a>
         </ul>
       </div>
     </div>
@@ -54,6 +58,7 @@ import Navbar from './Navbar.vue'
 import { mapGetters } from 'vuex'
 import { CartService } from '@/common/api.service.js'
 import { ProductService } from '@/common/api.service.js'
+import { TransactionService } from '@/common/api.service.js'
 export default {
   name: 'Account',
   components: {
@@ -61,13 +66,33 @@ export default {
   },
   data() {
     return {
-      FEcart: []
+      FEcart: [],
+      show: true,
+      showDone: false
     }
   },
   mounted() {
     this.queryCart()
   },
   methods: {
+      orderSubmit(){
+        this.FEcart.forEach(product => {
+          this.createTransaction(product, product.quantity)
+          this.removeCartItem(product.cart_id)
+        })
+        this.show = !this.show;
+        this.showDone = !this.showDone;
+      },
+      async createTransaction (product, quantity) {
+        await TransactionService.create({
+          customer_id: this.$store.getters.customer_id,
+          product_id: product.product_id,
+          total_cost: product.price * quantity
+        })
+        .then(res => {
+          console.log(res)
+        })
+      },
       async queryCart () {
         await CartService.query(this.$store.getters.customer_id)
         .then(res => {

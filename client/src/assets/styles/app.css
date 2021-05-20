@@ -213,3 +213,9 @@ router_link:active {
   font-size: 12px;
   cursor: pointer;
 }
+
+.page-title {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
