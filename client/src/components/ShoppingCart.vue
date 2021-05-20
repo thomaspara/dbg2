@@ -25,7 +25,7 @@
                 class="form-control quantity-input"
                 min="1"
               />
-              <a class="remove-product" @click="removeCartItem(product.cart_id)" href="/">Remove</a>
+              <a class="remove-product" @click="removeCartItem(product.cart_id)">Remove</a>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
           <a class="btn btn-continueShipping mt-2 text-white" href="/home"
             >Continue Shopping</a
           >
-          <a class="btn btn-checkout mt-2 text-white" href="/">Submit Order</a>
+          <a class="btn btn-checkout mt-2 text-white">Submit Order</a>
         </ul>
       </div>
     </div>

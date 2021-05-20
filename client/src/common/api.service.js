@@ -105,3 +105,13 @@ export const AuthenticationService = {
     return ApiService.put(`/customer/edit/${slug}`, { customer: body })
   }
 }
+
+export const BillingService = {
+  query (slug) {
+    return ApiService.query(`billinginfo/query/${slug}`)
+  },
+
+  // put (slug, body) {
+  //   return ApiService.put(`/billinginfo/edit/${slug}`, { billingInfo: body })
+  // }
+}

@@ -6,23 +6,23 @@
             <h1 class="brand-name">Account</h1>
             <h2 class="page-name">Details</h2>
             <form action="#">
-                First Name: 
+                First Name:
                 <input
                     class="form_input"
                     type="text"
                     v-model="customer.f_name"
                     :placeholder="customer.f_name"
                 />
-                Last Name: 
+                Last Name:
                 <input
                     class="form_input"
                     type="text"
                     v-model="customer.l_name"
                     :placeholder="customer.l_name"
                 />
-                Email: 
+                Email:
                 <input class="form_input" type="text" v-model="customer.email" :placeholder="customer.email" />
-                Password: 
+                Password:
                 <input
                     class="form_input"
                     type="password"
@@ -30,32 +30,31 @@
                     :placeholder="customer.user_password"
                 />
             </form>
-            <h2 class="page-name">Address</h2>
             <form action="#">
-                Address: 
+                Address:
                 <input
                     class="form_input"
                     type="text"
                     v-model="customer.address"
                     :placeholder="customer.address"
                 />
-                Apt: 
+                Apt:
                 <input
                     class="form_input"
                     type="text"
                     v-model="customer.apt_num"
                     :placeholder="customer.apt_num"
                 />
-                City: 
+                City:
                 <input class="form_input" type="text" v-model="customer.city" :placeholder="customer.city" />
-                State: 
+                State:
                 <input
                     class="form_input"
                     type="text"
                     v-model="customer.state"
                     :placeholder="customer.state"
                 />
-                Zipcode: 
+                Zipcode:
                 <input
                     class="form_input"
                     type="text"
@@ -64,34 +63,29 @@
                 />
             </form>
 
-            <h2 class="page-name">Card Information</h2>
+            <h2 class="page-name">Bank Information</h2>
             <form action="#">
-                Name on Card: 
+                Card Number:
                 <input
                     class="form_input"
                     type="text"
-                    name="firstname"
-                    placeholder="Name on Card"
+                    name="bank_num"
+                    placeholder="bank_num"
                 />
-                Card Number: 
-                <input
-                    class="form_input"
-                    type="text"
-                    name="lastname"
-                    placeholder="Card Number"
-                />
-                Expiration Date: 
-                <input class="form_input" type="text" name="data" placeholder="Expiration Date" />
-                CVV Code: 
-                <input
-                    class="form_input"
-                    type="text"
-                    name="password"
-                    placeholder="CVV Code"
-                />
+                <div to="/home" class="button" @click="fetchBank()">Bank Info</div>
             </form>
-            <p class="login-link">Add another card</p>
-            <div to="/home" class="button" @click="updateCustomer()">Save</div>
+            <form action="#" v-show="show">
+                Card Number:
+                <input
+                    class="form_input"
+                    type="text"
+                    name="bank_num"
+                    placeholder="bank_num"
+                />
+                <div to="/home" class="button" @click="fetchBank()">Bank Info</div>
+            </form>
+            <p class="card-link" @click="showNewCard()">Add another card</p>
+            <div to="/home" class="button" @click="updateCustomer()">Details</div>
         </div>
     </div>
 </template>
@@ -100,6 +94,7 @@
 /* eslint-disable */
 import Navbar from './Navbar.vue'
 import { AuthenticationService } from '@/common/api.service.js'
+import { BillingService } from '@/common/api.service.js'
 export default {
     name: 'Account',
     components: {
@@ -117,11 +112,14 @@ export default {
                 city: '',
                 state: '',
                 zip_code: ''
-            }
+            }, 
+            billing_infos :[], 
+            show: false
         }
     },
     created() {
         this.fetchCustomer();
+        this.fetchBilling();
     },
     methods: {
         async fetchCustomer () {
@@ -152,6 +150,30 @@ export default {
                     throw new Error(error)
                 })
         },
+        async fetchBilling () {
+            await BillingService.query(this.$store.getters.customer_id)
+                .then(({ data }) => {
+                    this.billing_infos =  data.billing_infos
+                
+                })
+                .catch(error => {
+                    throw new Error(error)
+                })
+        },
+        showNewCard () {
+            this.show = !this.show
+        }
+        // async updateBilling () {
+        //     await BillingService.put(this.$store.getters.customer_id, {
+        //             billingInfo: this.billing_infos
+        //         })
+        //         .then(({ data }) => {
+        //             // this.billing_infos =  data.billing_infos
+        //         })
+        //         .catch(error => {
+        //             throw new Error(error)
+        //         })
+        // },
     }
 };
 </script>

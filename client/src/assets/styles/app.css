@@ -207,3 +207,9 @@ router_link:active {
   align-items: center;
   overflow: hidden;
 } */
+
+.card-link {
+  color: #737171;
+  font-size: 12px;
+  cursor: pointer;
+}

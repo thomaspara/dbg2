@@ -43,6 +43,7 @@ export default {
                 quantity: 1
             }).then((res) => {
                 console.log(res)
+                alert("Product has been added to cart")
             })
             .catch(error => {
                 throw new Error(error)
