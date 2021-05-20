@@ -109,8 +109,7 @@ export const AuthenticationService = {
 export const BillingService = {
   query (slug) {
     return ApiService.query(`billinginfo/query/${slug}`)
-  },
-
+  }
   // put (slug, body) {
   //   return ApiService.put(`/billinginfo/edit/${slug}`, { billingInfo: body })
   // }
